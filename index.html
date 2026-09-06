@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MARVI | AI Cyclone Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="logo">🌀</div>
+
+            <div>
+                <h1>MARVI</h1>
+                <span>AI CYCLONE INTELLIGENCE SYSTEM</span>
+            </div>
+
+        </div>
+
+        <div class="header-right">
+
+            <div class="live">
+                <span class="live-dot"></span>
+                LIVE
+            </div>
+
+            <div class="clock" id="clock">
+                --:--:--
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="menu">
+
+                <div class="menu-item active">
+                    🏠 Dashboard
+                </div>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <div class="status-title">
+                    SYSTEM STATUS
+                </div>
+
+                <div class="status-line">
+                    <span class="status-green"></span>
+                    OPERATIONAL
+                </div>
+
+                <div class="status-small">
+                    Image Engine
+                </div>
+
+                <div class="ready">
+                    READY
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main">
+
+            <!-- ================= TOP GRID ================= -->
+
+            <div class="grid">
+
+
+                <!-- ================= UPLOAD ================= -->
+
+                <section class="panel">
+
+                    <div class="panel-title">
+                        🧠 AI IMAGE ANALYSIS
+                    </div>
+
+
+                    <div class="upload-box" id="uploadBox">
+
+                        <div class="upload-icon">
+                            ☁️
+                        </div>
+
+                        <h3>
+                            DRAG & DROP SATELLITE IMAGE
+                        </h3>
+
+                        <p>
+                            JPG / PNG / WEBP
+                        </p>
+
+                        <button
+                            class="choose"
+                            id="chooseBtn"
+                            type="button">
+                            CHOOSE FILE
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept="image/*"
+                    >
+
+
+                    <div
+                        class="preview-container"
+                        id="previewContainer">
+
+                        <div class="preview-title">
+                            UPLOADED SATELLITE IMAGE
+                        </div>
+
+                        <img
+                            id="preview"
+                            class="preview"
+                            alt="Uploaded satellite image"
+                        >
+
+                        <button
+                            id="analyzeBtn"
+                            class="analyze-btn"
+                            type="button">
+
+                            🔍 ANALYZE IMAGE
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= RESULT ================= -->
+
+                <section class="panel">
+
+                    <div class="panel-title">
+                        🧠 AI ANALYSIS RESULT
+                    </div>
+
+
+                    <div class="result-card">
+
+                        <div
+                            class="detected"
+                            id="detected">
+
+                            WAITING FOR IMAGE
+
+                        </div>
+
+
+                        <div class="confidence-title">
+                            VISUAL CONFIDENCE
+                        </div>
+
+
+                        <div
+                            class="confidence"
+                            id="confidence">
+
+                            --
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-list">
+
+                        <div class="result-row">
+                            <span class="result-icon">◉</span>
+                            <span>Cyclone Detection</span>
+                            <span class="result-value" id="detection">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">🌀</span>
+                            <span>Cyclone Type</span>
+                            <span class="result-value" id="cycloneType">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">◈</span>
+                            <span>Cloud Pattern</span>
+                            <span class="result-value" id="pattern">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">◈</span>
+                            <span>Intensity</span>
+                            <span class="result-value" id="intensity">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">⚠</span>
+                            <span>Risk Level</span>
+                            <span class="result-value" id="risk">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">☁</span>
+                            <span>Cloud Density</span>
+                            <span class="result-value" id="cloudDensity">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">👁</span>
+                            <span>Eye Visibility</span>
+                            <span class="result-value" id="eye">--</span>
+                        </div>
+
+
+                        <div class="result-row">
+                            <span class="result-icon">⌖</span>
+                            <span>Estimated Center</span>
+                            <span class="result-value" id="center">--</span>
+                        </div>
+
+                    </div>
+
+
+                    <div id="scan" class="scan"></div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- ================= LOWER GRID ================= -->
+
+            <div class="lower">
+
+
+                <!-- ================= INTENSITY ================= -->
+
+                <section class="panel">
+
+                    <div class="panel-title">
+                        📈 INTENSITY ANALYSIS
+                    </div>
+
+
+                    <div class="chart">
+
+                        <svg
+                            viewBox="0 0 500 200"
+                            preserveAspectRatio="none">
+
+                            <line
+                                x1="40"
+                                y1="170"
+                                x2="480"
+                                y2="170"
+                                stroke="#31506c"
+                                stroke-width="1"
+                            />
+
+                            <line
+                                x1="40"
+                                y1="120"
+                                x2="480"
+                                y2="120"
+                                stroke="#17334d"
+                                stroke-width="1"
+                            />
+
+                            <line
+                                x1="40"
+                                y1="70"
+                                x2="480"
+                                y2="70"
+                                stroke="#17334d"
+                                stroke-width="1"
+                            />
+
+
+                            <polyline
+                                id="forecastLine"
+                                points="50,170 130,170 210,170 290,170 370,170 450,170"
+                                fill="none"
+                                stroke="#b66cff"
+                                stroke-width="3"
+                            />
+
+
+                            <g id="chartPoints">
+
+                                <circle cx="50" cy="170" r="5" fill="#fff"/>
+                                <circle cx="130" cy="170" r="5" fill="#fff"/>
+                                <circle cx="210" cy="170" r="5" fill="#fff"/>
+                                <circle cx="290" cy="170" r="5" fill="#fff"/>
+                                <circle cx="370" cy="170" r="5" fill="#fff"/>
+                                <circle cx="450" cy="170" r="5" fill="#fff"/>
+
+                            </g>
+
+
+                            <text x="42" y="194" fill="#7890a8" font-size="11">
+                                NOW
+                            </text>
+
+                            <text x="120" y="194" fill="#7890a8" font-size="11">
+                                +12h
+                            </text>
+
+                            <text x="200" y="194" fill="#7890a8" font-size="11">
+                                +24h
+                            </text>
+
+                            <text x="280" y="194" fill="#7890a8" font-size="11">
+                                +48h
+                            </text>
+
+                            <text x="360" y="194" fill="#7890a8" font-size="11">
+                                +72h
+                            </text>
+
+                        </svg>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ================= RISK ================= -->
+
+                <section class="panel">
+
+                    <div class="panel-title">
+                        ⚠️ RISK OVERVIEW
+                    </div>
+
+
+                    <div
+                        class="risk-circle"
+                        id="riskCircle">
+
+                        <strong id="riskBig">
+                            WAIT
+                        </strong>
+
+                        <span>
+                            IMAGE BASED
+                        </span>
+
+                    </div>
+
+
+                    <div class="risk-legend">
+
+                        <span>🟢 Safe/Low</span>
+                        <span>🟡 Moderate</span>
+                        <span>🟠 High</span>
+                        <span>🔴 Critical</span>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- ================= PATH ================= -->
+
+            <section class="panel path-panel">
+
+                <div class="panel-title">
+                    🗺️ ESTIMATED CYCLONE PATH
+                </div>
+
+
+                <div class="path-layout">
+
+
+                    <!-- PATH VISUAL -->
+
+                    <div class="path-map">
+
+                        <div class="map-grid"></div>
+
+                        <div class="path-label now-label">
+                            NOW
+                        </div>
+
+                        <div class="path-label h12">
+                            +12H
+                        </div>
+
+                        <div class="path-label h24">
+                            +24H
+                        </div>
+
+                        <div class="path-label h48">
+                            +48H
+                        </div>
+
+                        <div class="path-label h72">
+                            +72H
+                        </div>
+
+
+                        <svg
+                            id="pathSvg"
+                            viewBox="0 0 700 300"
+                            preserveAspectRatio="none">
+
+                            <polyline
+                                id="pathLine"
+                                points=""
+                                fill="none"
+                                stroke="#00d9ff"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+
+                            <g id="pathDots"></g>
+
+                        </svg>
+
+
+                        <div
+                            class="cyclone-marker"
+                            id="cycloneMarker">
+
+                            🌀
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PATH DATA -->
+
+                    <div class="path-info">
+
+                        <div class="path-status">
+
+                            <span class="status-dot"></span>
+
+                            <div>
+
+                                <strong id="pathStatus">
+                                    WAITING FOR ANALYSIS
+                                </strong>
+
+                                <small>
+                                    AI trajectory estimation
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="path-stat">
+
+                            <span>
+                                🧭 Direction
+                            </span>
+
+                            <strong id="direction">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="path-stat">
+
+                            <span>
+                                🚀 Movement Speed
+                            </span>
+
+                            <strong id="speed">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="path-stat">
+
+                            <span>
+                                📍 Current Position
+                            </span>
+
+                            <strong id="pathCenter">
+                                --
+                            </strong>
+
+                        </div>
+
+
+                        <div class="path-stat">
+
+                            <span>
+                                ⏱ Forecast Window
+                            </span>
+
+                            <strong>
+                                72 HOURS
+                            </strong>
+
+                        </div>
+
+
+                        <div class="path-warning">
+
+                            ⚠️ This is an image-based estimated
+                            trajectory. Real forecasting requires
+                            time-series meteorological data.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
